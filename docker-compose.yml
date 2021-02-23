@@ -1,0 +1,42 @@
+version: "2.1"
+services:
+  #openssh-server:
+  #  image: ghcr.io/linuxserver/openssh-server
+  #  container_name: openssh-server
+  #  hostname: openssh-server #optional
+  #  environment:
+  #    - PUID=1000
+  #    - PGID=1000
+  #    - TZ=Europe/London
+  #    - SUDO_ACCESS=true #optional
+  #    - PASSWORD_ACCESS=true #optional
+  #    - USER_PASSWORD=password #optional
+  #    - USER_NAME=admin #optional
+    #volumes:
+    #  - /path/to/appdata/config:/config
+  #  ports:
+  #    - 2222:2222
+  #  restart: unless-stopped
+
+  openssh-server:
+    build: .
+    container_name: openssh-server
+    hostname: openssh-server #optional
+    entrypoint:
+      - bash
+    tty: true
+    stdin_open: true
+
+  client-1:
+    image: debian
+    entrypoint:
+      - bash
+    tty: true
+    stdin_open: true
+
+  client-2:
+    image: debian
+    entrypoint:
+      - bash
+    tty: true
+    stdin_open: true
