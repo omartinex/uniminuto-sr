@@ -9,4 +9,3 @@ RUN apt-get update \
     && apt-get clean autoclean \
     && rm -fr /var/lib/apt/lists/{apt,dpkg,cache,log} /tmp/* /var/tmp/*
 
-RUN service ssh start
