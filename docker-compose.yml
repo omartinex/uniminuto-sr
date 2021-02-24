@@ -22,20 +22,21 @@ services:
     build: .
     container_name: openssh-server
     hostname: openssh-server #optional
-    entrypoint:
-      - bash
+    entrypoint: /bin/bash -c "service ssh start && bash"
     tty: true
     stdin_open: true
+    restart: unless-stopped
+
 
   client-1:
-    image: debian
+    image: k23cz/openssh-client 
     entrypoint:
       - bash
     tty: true
     stdin_open: true
 
   client-2:
-    image: debian
+    image: k23cz/openssh-client 
     entrypoint:
       - bash
     tty: true
